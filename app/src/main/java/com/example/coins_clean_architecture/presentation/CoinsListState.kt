@@ -6,6 +6,6 @@ import com.example.coins_clean_architecture.domain.model.Coins
 
 data class CoinsListState(
     val isLoading : Boolean = false,
-    val coins : List<Coins> = emptyList(),
+    var coins : List<Coins> = emptyList(),
     val error : String? = null
 )

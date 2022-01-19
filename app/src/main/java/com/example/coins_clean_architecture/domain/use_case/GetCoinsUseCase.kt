@@ -15,7 +15,7 @@ import java.io.IOException
 
 class GetCoinsUseCase() : KoinComponent{
 
-    private val repository: CoinRepository by inject()
+    private val repository by inject<CoinRepository>()
 
     operator fun invoke(): Flow<Resource<List<Coins>>> = flow {
 

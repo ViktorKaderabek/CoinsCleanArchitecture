@@ -13,7 +13,7 @@ import org.koin.core.component.inject
 
 class MainViewModel():ViewModel(),KoinComponent {
 
-    private val useCase : GetCoinsUseCase by inject()
+    private val useCase by inject<GetCoinsUseCase>()
 
     private val _state = mutableStateOf(CoinsListState())
     val state: State<CoinsListState> = _state

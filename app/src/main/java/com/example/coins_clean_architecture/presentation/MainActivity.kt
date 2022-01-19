@@ -1,6 +1,8 @@
 package com.example.coins_clean_architecture.presentation
 
+import android.graphics.Color.red
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -11,6 +13,7 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.coins_clean_architecture.domain.model.Coins
@@ -30,12 +33,17 @@ class MainActivity : ComponentActivity() {
                 Surface(color = MaterialTheme.colors.background) {
                 }
                 val state = viewModel.state.value
+                val Coins = Coins("1.",true,"Bitcoin","BTC","Crypto")
+                state.coins = listOf(Coins)
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     items(state.coins) { result ->
                         CoinListItem(
                             coins = result
                         )
                     }
+
+                    Log.e("message", state.coins.toString())
+
 
                 }
             }
@@ -55,8 +63,8 @@ class MainActivity : ComponentActivity() {
         ) {
             Text(
                 text = "${coins.id}. ${coins.name} (${coins.symbol})",
-                style = MaterialTheme.typography.body1,
-                overflow = TextOverflow.Ellipsis
+                color = Color.Blue
+
             )
         }
     }
