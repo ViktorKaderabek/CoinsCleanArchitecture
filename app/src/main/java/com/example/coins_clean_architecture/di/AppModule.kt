@@ -16,8 +16,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 val AppModule = module {
 
-    fun getRepository(api : CoinPaprikaApi) : CoinRepository {
-        return CoinRepositoryImpl(api)
+    fun getRepository() : CoinRepository {
+        return CoinRepositoryImpl()
     }
 
     fun proivdePaprikaApi(): CoinPaprikaApi {
@@ -30,11 +30,11 @@ val AppModule = module {
 
     single { proivdePaprikaApi() }
 
-    single { getRepository(get()) }
+    single { getRepository() }
 }
 
 val viewModel = module {
     viewModel{
-        MainViewModel(get())
+        MainViewModel()
     }
 }

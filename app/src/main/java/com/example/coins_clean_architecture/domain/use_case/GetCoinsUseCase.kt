@@ -13,10 +13,9 @@ import org.koin.core.component.inject
 import retrofit2.HttpException
 import java.io.IOException
 
-class GetCoinsUseCase(
-    private val repository: CoinRepository
-){
+class GetCoinsUseCase() : KoinComponent{
 
+    private val repository: CoinRepository by inject()
 
     operator fun invoke(): Flow<Resource<List<Coins>>> = flow {
 
