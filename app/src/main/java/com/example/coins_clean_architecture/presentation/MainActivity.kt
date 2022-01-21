@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.example.coins_clean_architecture.common.Resource
 import com.example.coins_clean_architecture.domain.model.Coins
 import com.example.coins_clean_architecture.presentation.theme.Coins_Clean_ArchitectureTheme
 import org.koin.android.ext.android.inject
@@ -33,8 +34,12 @@ class MainActivity : ComponentActivity() {
                 Surface(color = MaterialTheme.colors.background) {
                 }
                 val state = viewModel.state.value
-                val Coins = Coins("1.",true,"Bitcoin","BTC","Crypto")
-                state.coins = listOf(Coins)
+                /*val Coins = Coins("1",true,"Bitcoin","BTC","Crypto")
+                state.coins = listOf(Coins,Coins)*/
+                if(state.isLoading){
+
+                }
+
                 LazyColumn(modifier = Modifier.fillMaxSize()) {
                     items(state.coins) { result ->
                         CoinListItem(
