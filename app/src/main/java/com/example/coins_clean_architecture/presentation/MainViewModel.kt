@@ -11,9 +11,11 @@ import kotlinx.coroutines.flow.onEach
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
 
-class MainViewModel():ViewModel(),KoinComponent {
+class MainViewModel(
+    private val useCase : GetCoinsUseCase
+):ViewModel() {
 
-    private val useCase by inject<GetCoinsUseCase>()
+
 
     private val _state = mutableStateOf(CoinsListState())
     val state: State<CoinsListState> = _state
