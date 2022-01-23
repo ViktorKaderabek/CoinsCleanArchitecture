@@ -20,6 +20,10 @@ class MainViewModel(
     private val _state = mutableStateOf(CoinsListState())
     val state: State<CoinsListState> = _state
 
+    init {
+        getCoins()
+    }
+
     private fun getCoins() {
         useCase().onEach { result ->
             when (result) {

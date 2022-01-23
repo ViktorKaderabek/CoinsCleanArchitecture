@@ -32,23 +32,20 @@ class MainActivity : ComponentActivity() {
             Coins_Clean_ArchitectureTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-                }
-                val state = viewModel.state.value
-                /*val Coins = Coins("1",true,"Bitcoin","BTC","Crypto")
-                state.coins = listOf(Coins,Coins)*/
-                if(state.isLoading){
+                    val state = viewModel.state.value
+                    /*val Coins = Coins("1",true,"Bitcoin","BTC","Crypto")
+                    state.coins = listOf(Coins,Coins)*/
 
-                }
+                    LazyColumn(modifier = Modifier.fillMaxSize()) {
+                        items(state.coins) { result ->
+                            CoinListItem(
+                                coins = result
+                            )
+                        }
 
-                LazyColumn(modifier = Modifier.fillMaxSize()) {
-                    items(state.coins) { result ->
-                        CoinListItem(
-                            coins = result
-                        )
+                        Log.e("message", state.coins.toString())
+
                     }
-
-                    Log.e("message", state.coins.toString())
-
 
                 }
             }

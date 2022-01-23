@@ -14,9 +14,11 @@ import org.koin.core.component.inject
 import retrofit2.HttpException
 import java.io.IOException
 
-class CoinRepositoryImpl() : CoinRepository, KoinComponent{
+class CoinRepositoryImpl(
+private val api : CoinPaprikaApi)
+: CoinRepository{
 
-    private val api : CoinPaprikaApi by inject()
+
 
     override suspend fun getCoins(): List<CoinsDtoItem> {
        return api.getCoins()
